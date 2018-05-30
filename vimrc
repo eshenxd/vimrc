@@ -57,8 +57,14 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/indexer.tar.gz'
+Plugin 'vim-scripts/DfrankUtil'
+Plugin 'vim-scripts/vimprj'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'vim-scripts/Pydiction'
 call vundle#end()
 
 "============ 内部配置 =================
@@ -182,17 +188,23 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
-"ycm config
-let g:ycm_server_python_interpreter='/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-" 补全功能在注释中同样有效
-let g:ycm_complete_in_comments=1
-" 开启 YCM 标签补全引擎
-let g:ycm_collect_identifiers_from_tags_files=1
+" Project root folders, used to identify ancestor path of project root directory.
+let g:indexer_root_folders = ['/root/workspace']
+" Project root markers, used to identify project root directory.
+let g:indexer_root_markers = ['.git']
+let g:indexer_root_setting = 'indexer.json'
+let g:indexer_user_modules = ['log', 'job', 'tag']
+
+"tags bar config
+" 设置 tagbar 子窗口的位置出现在主编辑区的左边 
+let tagbar_left=0
+" 设置显示／隐藏标签列表子窗口的快捷键。速记：identifier list by tag
+nnoremap <F2> :TagbarToggle<CR> 
+" 设置标签子窗口的宽度 
+let tagbar_width=32 
+" tagbar 子窗口中不显示冗余帮助信息 
+let g:tagbar_compact=1
+
+let g:pydiction_location = '/root/.vim/bundle/pydiction/complete-dict'
+let g:pydiction_menu_height = 3
 set completeopt-=preview
-" 从第一个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=1
-" 禁止缓存匹配项，每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0
-" 语法关键字补全
-let g:ycm_seed_identifiers_with_syntax=1
