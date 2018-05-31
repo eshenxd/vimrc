@@ -58,13 +58,14 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'SirVer/ultisnips'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/vimprj'
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'vim-scripts/Pydiction'
+"Plugin 'vim-scripts/Pydiction'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 
 "============ 内部配置 =================
@@ -205,6 +206,43 @@ let tagbar_width=32
 " tagbar 子窗口中不显示冗余帮助信息 
 let g:tagbar_compact=1
 
-let g:pydiction_location = '/root/.vim/bundle/pydiction/complete-dict'
-let g:pydiction_menu_height = 3
-set completeopt-=preview
+"let g:pydiction_location = '/root/.vim/bundle/pydiction/complete-dict'
+"let g:pydiction_menu_height = 3
+"set completeopt-=preview
+
+" Youcompletme config
+set completeopt=longest,menu
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_min_num_identifier_candidate_chars = 2
+"在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+
+let g:ycm_semantic_triggers =  {
+	\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+	\ 'cs,lua,javascript': ['re!\w{2}'],
+	\ }
+let g:ycm_filetype_whitelist = {
+    \ "c":1,
+    \ "cpp":1,
+    \ "py":1,
+    \ "sh":1,
+    \ "vim":1,
+    \}
+let g:ycm_show_diagnostics_ui = 0
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+
+" syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_pylint_args='--disable=C0111,R0903,C0301'
