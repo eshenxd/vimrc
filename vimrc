@@ -8,7 +8,9 @@ set encoding=utf-8
 
 " 使用真色
 set t_Co=256
-
+set textwidth=80
+set colorcolumn=-2
+highlight ColorColumn ctermbg=green guibg=orange
 " 开启文件类型侦测
 filetype on
 filetype plugin on
@@ -23,7 +25,8 @@ set backspace=indent,eol,start
 
 set wildmenu
 set incsearch
-
+set showmatch
+set matchtime=1
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
@@ -66,7 +69,10 @@ Plugin 'vim-scripts/vimprj'
 Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'vim-scripts/Pydiction'
 "Plugin 'scrooloose/syntastic'
+"Plugin 'nvie/vim-flake8'
 Plugin 'w0rp/ale'
+Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'tell-k/vim-autopep8'
 call vundle#end()
 
 "============ 内部配置 =================
@@ -283,3 +289,8 @@ let g:ale_linters = {
 \}
 
 let g:ale_sign_column_always = 1
+
+" auto pep8 config
+autocmd FileType python noremap <buffer> <F4> :call Autopep8()<CR>
+let g:autopep8_max_line_length=79
+let g:autopep8_aggressive=1
