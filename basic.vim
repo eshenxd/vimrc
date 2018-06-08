@@ -51,11 +51,12 @@ set relativenumber
 "highlight current line and column
 set cursorline
 set cursorcolumn
+highlight CursorLine   cterm=NONE ctermbg=blue ctermfg=NONE guibg=orange guifg=NONE
 
 " highlight search result
 set hlsearch
 
 set nowrap
 
-set filetype indent on
+filetype indent on
 
