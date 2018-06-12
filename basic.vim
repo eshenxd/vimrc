@@ -59,3 +59,6 @@ set nowrap
 
 set filetype indent on
 
+# set python auto indent to 2 spaces
+autocmd FileType python setlocal et sta sw=2 sts=2
+

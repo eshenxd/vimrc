@@ -29,3 +29,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 2. launch vim and run ```:PluginInstall```  
 
 Have fun!
+
+#### Commit list
+- v1.0.1  
+  + add airline and color scheme gruvbox
+  + add google style pylintrc to ale checker

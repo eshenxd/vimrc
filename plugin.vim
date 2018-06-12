@@ -22,6 +22,8 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'w0rp/ale'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'morhetz/gruvbox'
+Plugin 'vim-airline/vim-airline'
 call vundle#end()
 
 

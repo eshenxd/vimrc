@@ -165,6 +165,8 @@ let g:ale_linters = {
 \   'c': ['clang'],
 \   'python': ['pylint'],
 \}
+" add google style pylintrc
+let g:ale_python_pylint_options = '--rcfile /Users/Ethan/.vim/googlecl-pylint.rc'
 
 "<-------------------------------------------------->
 " auto pep8 config
@@ -174,4 +176,22 @@ let g:autopep8_max_line_length=79
 let g:autopep8_aggressive=1
 "<-------------------------------------------------->
 
-
+"airline config
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+" let g:airline_left_sep = '▶'
+" let g:airline_left_alt_sep = '❯'
+" let g:airline_right_sep = '◀'
+" let g:airline_right_alt_sep = '❮'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#fnamecollapse = 2
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extension#ale#enable = 1
